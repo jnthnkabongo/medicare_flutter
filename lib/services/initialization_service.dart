@@ -1,4 +1,5 @@
 import 'database_service.dart';
+import 'package:uuid/uuid.dart';
 
 class InitializationService {
   static final InitializationService _instance =
@@ -7,6 +8,7 @@ class InitializationService {
   InitializationService._internal();
 
   final DatabaseService _dbService = DatabaseService();
+  final Uuid _uuid = const Uuid(); // Instance UUID réutilisable
 
   // État d'initialisation
   bool _isInitialized = false;
@@ -100,10 +102,9 @@ class InitializationService {
     }
   }
 
-  // Générer un UUID simple a utiloser
+  // Générer un UUID sécurisé et unique
   String _generateUUID() {
-    return DateTime.now().millisecondsSinceEpoch.toString() +
-        (DateTime.now().microsecond % 1000).toString();
+    return _uuid.v4(); // UUID version 4 (aléatoire)
   }
 
   // Réinitialiser l'état
