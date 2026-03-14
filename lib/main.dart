@@ -18,6 +18,16 @@ class MyApp extends StatelessWidget {
       title: 'Medicare - Gestion Hospitalière',
       theme: ThemeData(primarySwatch: Colors.blue, useMaterial3: true),
       debugShowCheckedModeBanner: false,
+      // Désactiver le redimensionnement sur macOS
+      builder: (context, child) {
+        return MediaQuery(
+          data: MediaQuery.of(context).copyWith(
+            // Empêcher le redimensionnement basé sur le clavier
+            viewInsets: EdgeInsets.zero,
+          ),
+          child: child!,
+        );
+      },
       home: const SplashScreen(),
       routes: {
         '/login': (context) => const LoginPage(),

@@ -98,6 +98,7 @@ class _SignupPageState extends State<SignupPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false, // Désactive le redimensionnement
       appBar: AppBar(
         title: const Text('Créer un administrateur'),
         backgroundColor: Colors.blue.shade700,
@@ -113,7 +114,7 @@ class _SignupPageState extends State<SignupPage> {
         ),
         child: Center(
           child: SingleChildScrollView(
-            padding: const EdgeInsets.all(24.0),
+            padding: const EdgeInsets.all(250.0),
             child: Card(
               elevation: 8,
               shape: RoundedRectangleBorder(
